@@ -8,6 +8,7 @@ const version = {
 
 console.log(`Clearing ${SCRIPTS_DIR_RELATIVE}/bin`)
 Array.from(Deno.readDirSync(`${SCRIPTS_DIR_RELATIVE}/bin`))
+  .filter(file=>file.name!=='.gitignore')
   .forEach(file=>Deno.removeSync(`${SCRIPTS_DIR_RELATIVE}/bin/${file.name}`,{recursive:true}))
 
 console.log('---------------------')
