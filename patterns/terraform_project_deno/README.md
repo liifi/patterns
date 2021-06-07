@@ -1,4 +1,4 @@
-Use [deno](http://deno.land/) to `create`, `read`, `update`, `delete` a resource.
+Use [deno](http://deno.land/) to `create`, `read`, `update`, `delete` a resource, and for **pre** and **post** actions.
 
 ### Requirements
 - terraform
