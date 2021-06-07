@@ -1,5 +1,3 @@
-#!/usr/bin/env -S deno run -A
-
 import { SCRIPTS_DIR, $, _$, dir_files } from './_helpers.js';
 
 console.log(`Scripts dir: ${SCRIPTS_DIR}`)

@@ -1,0 +1,6 @@
+.terraform
+.terraform.lock.hcl
+*.tfstate*
+
+backend_kubeconfig.yaml
+_bash.cmd

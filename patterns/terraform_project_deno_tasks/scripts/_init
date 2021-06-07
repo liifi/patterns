@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Not reliable, but should mostly do for this use case
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+# Assumes the project was cloned with git (and git is installed, semi needed for windows, but linux not so much)
+# workdir=$(git rev-parse --show-toplevel)/app/tf-tests/testing
+
+# Docker .
+# docker run --rm -it -v "$(pwd):/workspace" --workdir /workspace ubuntu bash -c "apt update; apt install curl unzip -y; ./scripts/_init; bash"
+
+echo ""
+echo "---------------------"
+echo "Ensuring dependencies are installed"
+echo "---------------------"
+echo "IMPORTANT:"
+echo "If behind corporate proxy (with ssl intercept) modify first line in file './scripts/task'"
+echo "Use --cert <corp/path/to.pem>, also --import-map if raw proxy available"
+echo "May need HTTP_PROXY and HTTPS_PROXY env vars"
+echo ""
+echo "---------------------"
+
+#################################################
+# deno
+if ! command -v deno &> /dev/null
+then
+  echo "deno was not found in your PATH."
+  echo "Installation instructions https://deno.land/#installation"
+  echo "|- Or download binary into your PATH from https://github.com/denoland/deno/releases/latest"
+  echo "---------------------"
+  echo "Attempting to install using script https://deno.land/x/install/install.sh"
+  echo "---------------------"
+  if [ ! $(command -v curl) ]; then
+    echo "Unable to install. You need to have curl installed/available in you PATH." 1>&2
+    echo ""
+    exit 1
+  fi
+  curl -fsSL https://deno.land/x/install/install.sh | sh
+  exit_code=$?
+  echo "---------------------"
+  if [ $exit_code -ne 0 ]; then
+    echo "Unable to install automatically. Read above." 1>&2
+    echo ""
+    exit $exit_code
+  else
+    echo "Assuming the installation completed"
+  fi
+else
+  echo "deno was found in your PATH"
+  echo ""
+fi
+# Install other dependencies
+echo "---------------------"
+echo "Also make sure to add/install"
+echo "x, y, z, etc..."
+echo "If unsure how to install, run ./scripts/task deps"
+
+echo "---------------------"
+echo "Done. As long as 'deno' is in your path you can run ./script/task"
+echo ""

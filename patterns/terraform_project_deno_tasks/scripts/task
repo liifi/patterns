@@ -1,0 +1,19 @@
+#!/usr/bin/env -S deno run -A
+
+import { SCRIPTS_DIR, $, _$, dir_files } from './tasks/_helpers.js';
+
+console.log(`Scripts dir: ${SCRIPTS_DIR}`)
+
+const tasks_dir = `${SCRIPTS_DIR}/tasks`;
+const tasks_paths = (await dir_files(tasks_dir,{include:/(\.ts|\.js)$/,exclude:/^_/}));
+const tasks = tasks_paths.map(it=>it.split('/').pop().split('.').slice(0,-1).join('.'));
+if(!Deno.args.length || !tasks.some(task=>task===Deno.args[0])){
+  console.error('🚨 Provide a valid task as argument. Options are:')
+  console.log(tasks)
+  Deno.exit(1)
+}
+const task = Deno.args[0];
+console.log(`--- Starting task: ${task} ---`);
+try { await import(`file:///${tasks_paths[tasks.findIndex(t=>t===task)]}`); }
+catch(err){ console.log(`---\n🚨 ${err.stack}`) }
+console.log(`--- Finished task: ${task} ---`);

@@ -1,0 +1,27 @@
+#!/usr/bin/env -S deno run -A
+
+import { SCRIPTS_DIR, $, _$, dir_files } from './tasks/_helpers.js';
+
+console.log(`Scripts dir: ${SCRIPTS_DIR}`)
+const exclude = /\..{0,}$/ // file swith an extension
+const script_paths = [
+  ...await dir_files(`${SCRIPTS_DIR}`, {exclude}),
+  ...await dir_files(`${SCRIPTS_DIR}/tasks`,{exclude}),
+]
+for await (const script_path of script_paths) {
+  console.log(`Adding win.cmd equivalent: ${script_path}`)
+  await Deno.writeTextFile(`${script_path}.cmd`,`
+@echo off
+set SCRIPT_DIR_WIN=%~dp0
+set SCRIPT_DIR=%SCRIPT_DIR_WIN:\\=/%
+git-bash -c "bash_exe=$(where bash | head -n1); echo -n @\\\\""$bash_exe\\\\"" %%* > '%SCRIPT_DIR%/_bash.cmd';"
+@"%SCRIPT_DIR%\\_bash.cmd" -c "export PATH=/usr/bin:$PATH && '%SCRIPT_DIR%/%~n0' %*"  
+`.trim())
+}
+
+for await (const script_path of script_paths) {
+  console.log(`Adding git exec flag: ${script_path}`)
+  await $(`git update-index --chmod=+x ${script_path}`)
+}
+
+  

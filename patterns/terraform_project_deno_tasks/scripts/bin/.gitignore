@@ -1,0 +1,3 @@
+# binaries the tasks depend on
+*
+!.gitignore
