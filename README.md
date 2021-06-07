@@ -4,7 +4,16 @@ Library of code patterns that can be copied into a project
 
 ## How to use
 
-Clone/download the files, or use one of the following snippets for *pwsh* or *bash*
+Clone/download the files, or use one of the following snippets for `pwsh` or `bash`
+
+**[bash](https://github.com/git-for-windows/git/releases)** ( windows | linux | darwin )
+ ```bash
+ echo -n "Pattern: "; read pattern; \
+ curl -Lo patterns.tar.gz https://github.com/liifi/patterns/archive/refs/heads/main.tar.gz; \
+ tar -xzf patterns.tar.gz -C .; \
+ cp -Rf ./patterns*/patterns/$pattern/* .; \
+ rm -Rf ./patterns*
+ ```
 
 **[PowerShell](https://github.com/PowerShell/PowerShell#get-powershell)** ( windows | linux | darwin )
  ```powershell
@@ -14,15 +23,6 @@ Clone/download the files, or use one of the following snippets for *pwsh* or *ba
  Copy-Item -Recurse -Force ./patterns*/patterns/$pattern/* .; `
  Remove-Item -Recurse ./patterns*
  ```
-**bash** ( windows | linux | darwin )
- ```bash
- echo -n "Pattern: "; read pattern; \
- curl -Lo patterns.tar.gz https://github.com/liifi/patterns/archive/refs/heads/main.tar.gz; \
- tar -xzf patterns.tar.gz -C .; \
- cp -Rf ./patterns*/patterns/$pattern/* .; \
- rm -Rf ./patterns*
- ```
-
 
 
 
