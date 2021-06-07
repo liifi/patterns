@@ -9,17 +9,17 @@ Clone/download the files, or use one of the following snippets for *pwsh* or *ba
 **[PowerShell](https://github.com/PowerShell/PowerShell#get-powershell)** ( windows | linux | darwin )
  ```powershell
  $pattern = Read-Host "Pattern"; `
- (New-Object Net.WebClient).DownloadFile("https://github.com/liifi/patterns.zip", "$(pwd)/patterns.zip"); `
+ (New-Object Net.WebClient).DownloadFile("https://github.com/liifi/patterns/archive/refs/heads/main.zip", "$(pwd)/patterns.zip"); `
  Expand-Archive -Force patterns.zip -DestinationPath .; `
- Copy-Item -Recurse -Force ./patterns*/$pattern/* .; `
+ Copy-Item -Recurse -Force ./patterns*/patterns/$pattern/* .; `
  Remove-Item -Recurse ./patterns*
  ```
 **bash** ( windows | linux | darwin )
  ```bash
  echo -n "Pattern: "; read pattern; \
- curl -o patterns.tar.gz https://github.com/liifi/patterns.tar.gz; \
+ curl -o patterns.tar.gz https://github.com/liifi/patterns/archive/refs/heads/main.tar.gz; \
  tar -xzf patterns.tar.gz -C .; \
- cp -Rf ./patterns*/$pattern/* .; \
+ cp -Rf ./patterns*/patterns/$pattern/* .; \
  rm -Rf ./patterns*
  ```
 
