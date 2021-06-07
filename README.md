@@ -31,5 +31,6 @@ Clone/download the files, or use one of the following snippets for *pwsh* or *ba
 | name | description |
 |-|-|
 | [git_scripts](./patterns/git_scripts) | If you have to use `bash` for all git scripts, add exec flag, also provide consistent call from *nix AND windows *(cmd/pwsh)* like `./scripts/build`, `./scripts/etc` |
+| [git_scripts_deno](./patterns/git_scripts_deno) | Scripting in a shell language can be painful, use something very portable like [deno](https://deno.land/) instead, add exec flag, also provide consistent call from *nix AND windows *(cmd/pwsh)* like `./scripts/build`, `./scripts/etc` |
 | [terraform_module_deno](./patterns/terraform_module_deno) | Use [deno](http://deno.land/) to `create`, `read`, `update`, `delete` a resource. |
 | [terraform_project_deno](./patterns/terraform_project_deno) | Use [deno](http://deno.land/) to `create`, `read`, `update`, `delete` a resource, and for **pre** and **post** actions. |
