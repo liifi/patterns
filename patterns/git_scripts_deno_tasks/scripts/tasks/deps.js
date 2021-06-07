@@ -6,7 +6,7 @@ const version = {
 }
 
 console.log(`Clearing ${SCRIPTS_DIR_RELATIVE}/bin`)
-try { await $(`bash.cmd -c "/bin/rm ${SCRIPTS_DIR_RELATIVE}/bin/*"`,true) }
+try { await $(`_bash.cmd -c "/bin/rm ${SCRIPTS_DIR_RELATIVE}/bin/*"`,true) }
 catch(err){ console.error(err); console.error('Unable to clean directory, try manually with:   rm ${SCRIPTS_DIR_RELATIVE}/bin/*')}
 
 console.log('---------------------')

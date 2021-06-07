@@ -7,6 +7,6 @@ If you have to use `bash` for all git scripts, add exec flag, also provide consi
 
 - Run `./scripts/_scripts` to add git exec flag to scripts and their equivalent `.cmd` file
 
-> **IMPORTANT** `./scripts/_scripts` will also generate a `bash.cmd`, do not commit it (make sure its in your `.gitignore`), all other `*.cmd` should be committed. The `.cmd` files allow windows to automatically open bash for a script. 
+> **IMPORTANT** `./scripts/_scripts` will also generate a `_bash.cmd`, do not commit it (make sure its in your `.gitignore`), all other `*.cmd` should be committed. The `.cmd` files allow windows to automatically open bash for a script. 
 
 Windows users should just use WSL or containers. Sorry [pwsh](https://github.com/PowerShell/PowerShell#get-powershell), not there in adoption and default shell.
