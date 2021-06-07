@@ -30,5 +30,5 @@ Clone/download the files, or use one of the following snippets for *pwsh* or *ba
 
 | name | description |
 |-|-|
-| [terraform_module_deno](./terraform_module_deno) | Use [deno](http://deno.land/) to `create`, `read`, `update`, `delete` a resource. |
-| [terraform_project_deno](./terraform_project_deno) | Use [deno](http://deno.land/) to `create`, `read`, `update`, `delete` a resource, and for **pre** and **post** actions. |
+| [terraform_module_deno](./patterns/terraform_module_deno) | Use [deno](http://deno.land/) to `create`, `read`, `update`, `delete` a resource. |
+| [terraform_project_deno](./patterns/terraform_project_deno) | Use [deno](http://deno.land/) to `create`, `read`, `update`, `delete` a resource, and for **pre** and **post** actions. |
