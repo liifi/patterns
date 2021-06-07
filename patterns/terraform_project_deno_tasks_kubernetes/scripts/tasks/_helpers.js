@@ -10,7 +10,7 @@ export const PATH_SEP = is_windows ? ";" : ":";
 export const TEMP_DIR = (is_windows ? Deno.env.get('TEMP') : (Deno.env.get('TMPDIR') || "/tmp")).replace(new RegExp(SEP_PATTERN,'g'),'/');
 export const SCRIPTS_DIR = new URL("..", import.meta.url).pathname.slice(is_windows).replace(/\/$/,'');
 export const SCRIPTS_DIR_RELATIVE = SCRIPTS_DIR.replace(Deno.cwd().replaceAll('\\','/'),'.');
-console.log(SCRIPTS_DIR)
+
 // ===============================================================
 // ===============================================================
 
