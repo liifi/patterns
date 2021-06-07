@@ -17,7 +17,7 @@ Clone/download the files, or use one of the following snippets for *pwsh* or *ba
 **bash** ( windows | linux | darwin )
  ```bash
  echo -n "Pattern: "; read pattern; \
- curl -o patterns.tar.gz https://github.com/liifi/patterns/archive/refs/heads/main.tar.gz; \
+ curl -Lo patterns.tar.gz https://github.com/liifi/patterns/archive/refs/heads/main.tar.gz; \
  tar -xzf patterns.tar.gz -C .; \
  cp -Rf ./patterns*/patterns/$pattern/* .; \
  rm -Rf ./patterns*
