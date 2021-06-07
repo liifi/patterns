@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# For windows, enter shell with proper PATH
+bash

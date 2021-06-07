@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Not reliable, but should mostly do for this use case
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+pushd $SCRIPT_DIR
+
+shopt -s extglob ## enables extended globbing
+for f in $(ls -d !(*.*)); do
+  echo "Adding win cmd equivalent for: $f"
+  cat > $f.cmd <<-'EOF'
+@echo off
+set SCRIPT_DIR_WIN=%~dp0
+set SCRIPT_DIR=%SCRIPT_DIR_WIN:\=/%
+git-bash -c "bash_exe=$(where bash | head -n1); echo -n @\\""$bash_exe\\"" %%* > '%SCRIPT_DIR%/bash.cmd';"
+@"%SCRIPT_DIR%\bash.cmd" -c "export PATH=/usr/bin:$PATH && '%SCRIPT_DIR%/%~n0' %*"
+EOF
+done
+
+for f in $(ls -d !(*.*)); do
+  echo "Adding git exec flag to: $f"
+  git update-index --chmod=+x $f
+done
+
+for f in $(ls *.*); do
+  if [ "${f: -3}" == ".sh" ] || [ "${f: -4}" == ".ps1" ]; then
+    echo "Adding git exec flag to: $f"
+    git update-index --chmod=+x $f
+  fi
+done
