@@ -1,7 +1,7 @@
 If you have to use `bash` for all git scripts, add exec flag, also provide consistent call from *nix AND windows *(cmd/pwsh)* like `./scripts/build`, `./scripts/etc`
 
 ### Requirements
-- git-bash (windows)
+- [(windows)](https://github.com/git-for-windows/git/releases) git-bash 
 
 ### Notes
 

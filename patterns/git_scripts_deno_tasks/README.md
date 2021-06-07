@@ -1,7 +1,7 @@
-Scripting in a shell language can be painful, use something very portable like [deno](https://deno.land/) instead, add exec flag, also provide consistent call from *nix AND windows *(cmd/pwsh)* like `./scripts/build`, `./scripts/etc`
+Scripting in a shell language can be painful, use something very portable like [deno](https://deno.land/) instead, and a task pattern with cross platform binary download, git add exec flag, also provide consistent call from *nix AND windows *(cmd/pwsh)* like `./scripts/task deps`, `./scripts/task build`
 
 ### Based on patterns
-- [git_scripts](../git_scripts)
+- [git_scripts_deno](../git_scripts_deno)
 
 ### Requirements
 - [(windows)](https://github.com/git-for-windows/git/releases) git-bash 
