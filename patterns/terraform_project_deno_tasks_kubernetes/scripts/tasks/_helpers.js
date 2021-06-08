@@ -31,9 +31,12 @@ export async function download_executable(url, path, options){
 export async function download_zip(url, path, options){
   await download_binary(url, `${path}.zip`, options)
   await (
-    is_windows ? $(`PowerShell -NoProfile -NoLogo Expand-Archive -Path ${path}.zip -DestinationPath ${path}/../`)
-    : $(`unzip ${path}.zip -d ${path}/../`)
+    is_windows ? $(`PowerShell -NoProfile -NoLogo Expand-Archive -Path ${path}.zip -DestinationPath ${path_base_name(path)}`)
+    : $(`unzip ${path}.zip -d ${path_base_name(path)}/`)
   )
+}
+export function path_base_name(path){
+  return path == '.' ? path : path.replace(/[^\/]*$/,'')
 }
 
 // ===============================================================
